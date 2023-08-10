@@ -33,8 +33,8 @@ class IncomingMessageService < ApplicationService
       ResendService.perform(message:, chat_slug: ::Regexp.last_match(1), text: ::Regexp.last_match(2))
     when %r{^/resend}i
       INVALID_COMMAND_FORMAT
-    else
-      Rails.logger.info("Unknown command: #{message.inspect}")
+    # else
+    #   Rails.logger.info("Unknown command: #{message.inspect}")
     end
   rescue StandardError => e
     notify_support_and_log_error(e)
